@@ -1,0 +1,122 @@
+Q1 Why must initialization happen before assignment?
+
+A. Because in initialization the variable gets the value at the time it is created whereas in assignment 
+   the variable gets a value after it is created, so in initialization the memory gets allocated first and no value is there as garbage value for variables.
+   
+Q1.2. When is initialization preferred over assignment?
+
+A. initialization is preferred in some situations :
+    -for const variables , the later assignment is not allowed.
+	-for reference variables must need initualization at the time of creation .
+	-in constructor initialization list 
+	-for objects also , because some objects required early initialization.
+	
+Q2.2.Explain how reference variables act as aliases and how that affects swapByReference().?
+
+A.   A reference variable is an another name or alias for an existing variable.
+     ex:- int a=10;
+          int &ref=a;
+     ref means it refers to the a memory address , so if we change ref , a automatically gets chage as it shares same memory location.
+    	 
+		 
+	Effect in swapByReference()
+
+void swapByReference(int &a, int &b)
+
+a becomes an alias of the first variable.
+
+b becomes an alias of the second variable.
+
+Therefore, swapping a and b directly changes the original variables in main(), 
+so the values actually swap.
+
+Q3.2 Two differences between Pointer and Reference
+A.
+   Pointer:-
+   -it stores the address of a variable
+   -it can be changed to point to another variable
+   -it can be null but we have to check deferencing.
+   
+   Reference:-
+   -Reference is another name or alias of a variable.
+   -Reference cannot change after initialization
+   -it cannot be null because it must contain some variables .
+   
+   Q3.2 Why references cannot be reseated?
+   A.
+      Because it is an another name or alias for variable.
+      and once it get initialized with the variable then it cannot get changed or again assigned.
+	  and it cannot exist without a variable.
+	  
+Q4.2   Why constructors are not called when using malloc?
+A.
+    Because it is a c function , which onlt allocates memory and does not know about any c++ objects
+	thats why it not call constructor of a class.
+	
+->	Why new is preferred in C++?
+A.
+    Because new is used to allocates the memory and call constructor automatically, 
+	there is no need of type casting
+	because it return the correct pointer type.
+	
+-> Difference in return types and initialization?
+A.
+   	             malloc:-                                    new:-
+return type        void*                                     return proper pointer type
+type casting      needs                                         no need	
+constructor call   no                                              yes	
+
+-> Why malloc cannot initialize complex types?
+A.
+   because complex types need class and constructors and malloc does not call constructor
+   and only gives raw memory,
+   so it does not properly initialize objects.   
+   
+Q5.2
+-> When does the compiler generate a default constructor?
+A.
+   the compiler automatically generates the default constructor if the programmer has not write the 
+   constructor inside it.
+   ex: class a{
+   int a;
+   }
+    compiler generates  defaultly a constructor: a(){}.
+	
+-> 	When does the compiler NOT generate a default constructor?
+A. 
+   the compiler does not create a default constructor when:
+   the programmer already writes any   constructor.
+   ex:- class A
+{
+public:
+    A(int x) { }
+};
+
+->Can constructors be overloaded?
+A. 
+   yes constructors can be overloaded having different parameters.
+ex:-  
+  class A
+{
+public:
+    A() { cout<<"Default"; }
+    A(int x) { cout<<"Parameterized"; }
+};
+
+Q6.3 
+-> Why must const members be initialized in initializer list?
+A. because const variable or member cannot be changed after they created,
+   so they must get the value at the time of object creation.
+   
+-> What happens if you assign a const member inside constructor body?
+A. 
+      It will give a compile-time error, 
+	  because const values cannot be assigned after initialization.
+	  
+-> Why is initializer list faster than assignment?
+A. 
+   because in initializer list the variable is assigned once whereas in assignment 
+   the variable is first created and get assigned by a value, so in that way the list avoid extra work make it faster and efficient.
+   
+	  
+	  
